@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
+use Illuminate\Routing\RouteRegistrar;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +29,5 @@ Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.sho
 Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
 
 Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
+
+Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
