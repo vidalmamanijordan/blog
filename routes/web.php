@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
 use Illuminate\Routing\RouteRegistrar;
 
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +38,12 @@ Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('curs
 Route::resource('cursos', CursoController::class);
 
 Route::view('nosotros', 'nosotros')->name('nosotros');
+
+Route::get('contactanos', function() {
+    
+    $correo = new ContactanosMailable;
+
+    Mail::to('vidal_mamani@upeu.edu.pe')->send($correo);
+
+    return "Mensaje enviado";
+});
